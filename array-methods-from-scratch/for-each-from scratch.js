@@ -22,7 +22,7 @@ function for_Each(array, callbackFunction) {
 }
 
 
-//check
+// sample
 const myArray = [1, 2, 3, 4, 5, 6, 7];
 
 function elementsSquared (element) {

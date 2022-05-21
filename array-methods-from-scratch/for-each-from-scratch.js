@@ -21,14 +21,12 @@ function for_Each(array, callbackFunction) {
   }
 }
 
-
 // sample
 const myArray = [1, 2, 3, 4, 5, 6, 7];
 
 function elementsSquared (element) {
   return element * element;
 }
-
 
 // test
 console.log(for_Each(myArray, elementsSquared));

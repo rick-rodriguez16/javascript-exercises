@@ -31,4 +31,4 @@ function elementsSquared (element) {
 
 
 // test
-for_Each(myArray, elementsSquared);
+console.log(for_Each(myArray, elementsSquared));

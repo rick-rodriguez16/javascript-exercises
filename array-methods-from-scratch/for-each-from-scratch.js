@@ -30,3 +30,4 @@ function elementsSquared (element) {
 
 // test
 console.log(for_Each(myArray, elementsSquared));
+console.log(myArray);

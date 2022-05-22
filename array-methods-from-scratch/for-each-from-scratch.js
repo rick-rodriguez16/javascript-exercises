@@ -36,4 +36,19 @@ function elementsSquared (element) {
 // test
 const myArray = new Arrays([1, 2, 3, 4, 5, 6, 7]);
 console.log(myArray.for_Each(elementsSquared));
+// Expected: 
+// 1
+// 4
+// 9
+// 16
+// 25
+// 36
+// 49
+// undefined
+
 console.log(myArray.array);
+// Expected:
+// [
+//   1, 2, 3, 4,
+//   5, 6, 7
+// ]

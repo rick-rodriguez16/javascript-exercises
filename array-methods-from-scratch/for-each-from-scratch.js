@@ -17,38 +17,31 @@
 
 class Arrays {
 
-  constructor(array = []) {
+  constructor(array) {
     this.array = array;
   }
 
   for_Each (callbackFunction) {
     for (let i = 0; i < this.array.length; i++) {
-      console.log(callbackFunction(this.array[i], i, this.array));
+      callbackFunction(this.array[i], i, this.array);
     }
   }
 }
 
 // function chosen to use as callback
 function elementsSquared (element) {
-  return element * element;
+  console.log(element * element);
 }
 
 // test
-const myArray = new Arrays([1, 2, 3, 4, 5, 6, 7]);
-console.log(myArray.for_Each(elementsSquared));
-// Expected: 
-// 1
-// 4
-// 9
-// 16
-// 25
-// 36
-// 49
-// undefined
+const testArray = [1, 2, 3, 4, 5, 6, 7];
+const myArray = new Arrays(testArray);
 
+console.log("\nDisplay the elements in myArray:")
+myArray.for_Each(element => console.log(element));
+
+console.log("\nDisplay the squares of each element and show that for_Each returns undefined:");
+console.log(myArray.for_Each(elementsSquared));
+
+console.log("\nDisplay the unmutated array after the call to for_Each:")
 console.log(myArray.array);
-// Expected:
-// [
-//   1, 2, 3, 4,
-//   5, 6, 7
-// ]

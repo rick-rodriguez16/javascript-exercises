@@ -15,19 +15,25 @@
 //    8. once started, forEach cannot be stopped except by throwing an exception
 //    9. forEach expects a synchronous function.  It does not work for promises or async/await
 
-function for_Each(array, callbackFunction) {
-  for (let i = 0; i < array.length; i++) {
-    console.log(callbackFunction(array[i], i, array));
+class Arrays {
+
+  constructor(array = []) {
+    this.array = array;
+  }
+
+  for_Each (callbackFunction) {
+    for (let i = 0; i < this.array.length; i++) {
+      console.log(callbackFunction(this.array[i], i, this.array));
+    }
   }
 }
 
-// sample
-const myArray = [1, 2, 3, 4, 5, 6, 7];
-
+// function chosen to use as callback
 function elementsSquared (element) {
   return element * element;
 }
 
 // test
-console.log(for_Each(myArray, elementsSquared));
-console.log(myArray);
+const myArray = new Arrays([1, 2, 3, 4, 5, 6, 7]);
+console.log(myArray.for_Each(elementsSquared));
+console.log(myArray.array);

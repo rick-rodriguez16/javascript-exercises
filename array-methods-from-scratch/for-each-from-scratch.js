@@ -39,9 +39,34 @@ const myArray = new Arrays(testArray);
 
 console.log("\nDisplay the elements in myArray:")
 myArray.for_Each(element => console.log(element));
+// Expected:
+// Display the elements in myArray:
+// 1
+// 2
+// 3
+// 4
+// 5
+// 6
+// 7
 
 console.log("\nDisplay the squares of each element and show that for_Each returns undefined:");
 console.log(myArray.for_Each(elementsSquared));
+// Expected:
+// Display the squares of each element and show that for_Each returns undefined:
+// 1
+// 4
+// 9
+// 16
+// 25
+// 36
+// 49
+// undefined
 
 console.log("\nDisplay the unmutated array after the call to for_Each:")
 console.log(myArray.array);
+// Expected:
+// Display the unmutated array after the call to for_Each:
+// [
+//   1, 2, 3, 4,
+//   5, 6, 7
+// ]

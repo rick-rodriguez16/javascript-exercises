@@ -1,7 +1,7 @@
 // These exercises provide insight into how the Array methods work
 
 
-// ForEach
+// map
 // per MDN: this method creates a new array populated with the results of calling a provided
 //          function on every element in the calling array
 

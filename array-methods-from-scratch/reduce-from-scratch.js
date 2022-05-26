@@ -75,7 +75,6 @@ class Arrays {
 const productOfArrayElements = (product, currValue) => product * currValue;
 
 // test
-
 const testArray = [10, 10, 10, 10, 10];
 const myArray = new Arrays(testArray);
 
@@ -83,9 +82,6 @@ const sum = myArray.reduced(
     (prevVal, currVal) => prevVal + currVal
 );
 console.log(sum);
-
-const product = myArray.reduced(productOfArrayElements);
-console.log(product);
 
 console.log(myArray.reduced(productOfArrayElements));
 

@@ -1,22 +1,10 @@
 // These exercises provide insight into how the Array methods work
 
-// filter
-// per MDN: this method creates a new array with all the elements
-//          that pass the test implemented by the provided function.
+// reduce
+// per MDN: 
 
-// Some features of filter:
-//    1. the callback function is called with the following 3 arguments: 
-//          the element, the index and the object being traversed and returns
-//          a value that is coercible to a Boolean value
-//    2. the callback is called once for each element in ascending order
-//    3. filter uses the returned coercible Boolean value to construct a 
-//          new array of all values for which the callback function
-//          returns true
-//    4. the range of the elements is processed by filter before the first 
-//          call to the callback function
-//    5. filter is chainable
-//    6. filter does not mutate the array upon which it is called, however
-//    7. the callback function can mutate the array
+// Some features of reduce:
+//    1. 
 
 class Arrays {
 

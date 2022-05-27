@@ -7,7 +7,6 @@
 //          final result of running the reducer across all elements of the 
 //          array is a single value.
 
-
 // Some features of reduce:
 //  1. The callback function is called with the following 4 arguments: 
 //      -   the accumulator (aka, the previousValue) which holds the value 
@@ -99,10 +98,10 @@ console.log('Array 1: ', myArr1.reduceIt(factorial));
 // Expected: 5040
 
 console.log('Array 2: ', myArr2.reduceIt(factorial));
-// Expected: NaN
+// Expected: NaN (strings wont work here)
 
 console.log('Array 3: ', myArr3.reduceIt(factorial));
-// Expected: NaN
+// Expected: NaN (numbers and strings wont work here, either)
 
 console.log('Array 4:  Would throw TypeError');
 

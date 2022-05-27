@@ -66,6 +66,7 @@ class Arrays {
 }
 
 
+
 const topSix = [
     { name: "Nigeria", position: "1st", points: 43 },
     { name: "England", position: "2nd", points: 37 },

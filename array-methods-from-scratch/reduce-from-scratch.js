@@ -31,59 +31,65 @@
 //     call to the callback function
 //  7. reduce is chainable
 
-
 class Arrays {
-
+    
     constructor(array) {
         this.array = array;
     }
 
-    reduced (callbackFunction, initialValue) {
+    reduceIt (callbackFunction, initialValue) {
         
         try {
             if (this.array.length === 0 && initialValue === undefined)
                 throw TypeError;
         } catch(err) {
-            console.log("\nTypeError: Reduced using an empty array and no initial value");
-        }
-        
-        let accumulator = 0;
-        let currentValue = 0;
-        let currentIndex = 0;
-
-        if(initialValue === undefined) {
-            accumulator = this.array[0];
-            currentValue = this.array[1];
-            currentIndex = 1;
-
-        } else {
-            accumulator = initialValue;
-            currentValue = this.array[0];
-            currentIndex = 0;
-        }   
-
-        for (; currentIndex < this.array.length; currentIndex++ ){
-            accumulator = callbackFunction(accumulator, currentValue, currentIndex, this.array)
+            console.log("\nTypeError: reduceIt using an empty array and no initial value");
         }
 
+        let accumulator, currentValue;
+
+        for (let currentIndex = 0; currentIndex < this.array.length; currentIndex++) {
+            
+            currentValue = this.array[currentIndex];
+
+            if (initialValue === undefined) {
+
+            } else {
+                accumulator = callbackFunction(accumulator, currentValue, currentIndex, this.array)
+            }
+        }
         return accumulator;
     }
 }
 
-
 // function chosen to use as callback
-const productOfArrayElements = (product, currValue) => product * currValue;
+const factorial = (product, currValue) => product * currValue;
 
 // test
-const testArray = [10, 10, 10, 10, 10];
-const myArray = new Arrays(testArray);
+const arr1 = [1, 2, 3, 4, 5, 6, 7];
+const arr2 = [];
+const myArr1 = new Arrays(arr1);
+const myArr2 = new Arrays(arr2);
 
-const sum = myArray.reduced(
-    (prevVal, currVal) => prevVal + currVal
-);
-console.log(sum);
 
-console.log(myArray.reduced(productOfArrayElements));
+// // display sum of the array
+// console.log(myArray.reduceIt((acc, curr) => acc + curr));
 
-console.log("\nDisplay the original unmutated array after the call to filtered:")
-console.log(myArray.array);
+// console.log(myArray.reduceIt(factorialArray));
+
+//console.log("\nDisplay the original unmutated array after the call to filtered:")
+console.log(myArr1.array);
+console.log(myArr1.reduceIt((acc, curr) => acc + curr, 10));
+
+console.log(myArr1.array);
+console.log(myArr1.reduceIt(factorial, 1));
+
+console.log(myArr2.array);
+console.log(myArr2.reduceIt((acc, curr) => acc + curr, 10));
+
+console.log(myArr2.array);
+console.log(myArr2.reduceIt((acc, curr) => acc + curr));
+
+
+
+

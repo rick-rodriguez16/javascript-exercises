@@ -43,18 +43,22 @@ class Arrays {
             if (this.array.length === 0 && initialValue === undefined)
                 throw TypeError;
         } catch(err) {
-            console.log("\nTypeError: reduceIt using an empty array and no initial value");
+            console.log("TypeError: reduceIt using an empty array and no initial value");
         }
 
-        let accumulator, currentValue;
+        let accumulator = initialValue;
 
-        for (let currentIndex = 0; currentIndex < this.array.length; currentIndex++) {
+        if (accumulator === undefined) {
             
-            currentValue = this.array[currentIndex];
+            accumulator = this.array[0];
+            for (let currentIndex = 1; currentIndex < this.array.length; currentIndex++) {
+                let currentValue = this.array[currentIndex];
+                accumulator = callbackFunction(accumulator, currentValue, currentIndex, this.array)
+            }            
+        } else {
 
-            if (initialValue === undefined) {
-
-            } else {
+            for (let currentIndex = 0; currentIndex < this.array.length; currentIndex++) {
+                let currentValue = this.array[currentIndex];
                 accumulator = callbackFunction(accumulator, currentValue, currentIndex, this.array)
             }
         }
@@ -67,29 +71,48 @@ const factorial = (product, currValue) => product * currValue;
 
 // test
 const arr1 = [1, 2, 3, 4, 5, 6, 7];
-const arr2 = [];
+const arr2 = ['hi', 'bye', 'good', 'bad'];
+const arr3 = [1, 'hi', 3, 'bye', 5, 'good', 7]
+const arr4 = [];
 const myArr1 = new Arrays(arr1);
 const myArr2 = new Arrays(arr2);
+const myArr3 = new Arrays(arr3);
+const myArr4 = new Arrays(arr4);
 
+// display sum of arrays with initializer
+console.log("\nVarious sums using numbers, strings, combos, etc.")
+console.log('Array 1: ', myArr1.reduceIt((acc, curr) => acc + curr, 5));
+// Expected: 33
 
-// // display sum of the array
-// console.log(myArray.reduceIt((acc, curr) => acc + curr));
+console.log('Array 2: ', myArr2.reduceIt((acc, curr) => acc + curr, 'sky'));
+// Expected: skyhibyegoodbad (concatenation)
 
-// console.log(myArray.reduceIt(factorialArray));
+console.log('Array 3: ', myArr3.reduceIt((acc, curr) => acc + curr, 'baby'));
+// Expected: baby1hi3bye5good7 (integers coerced to strings, then concatenated)
 
-//console.log("\nDisplay the original unmutated array after the call to filtered:")
+console.log('Array 4: ', myArr4.reduceIt((acc, curr) => acc + curr, 12000));
+// Expected: 12000 (empty array with just initializer)
+
+// display factorials without initializer
+console.log("\nVarious factorials using numbers, strings, combos, etc.")
+console.log('Array 1: ', myArr1.reduceIt(factorial));
+// Expected: 5040
+
+console.log('Array 2: ', myArr2.reduceIt(factorial));
+// Expected: NaN
+
+console.log('Array 3: ', myArr3.reduceIt(factorial));
+// Expected: NaN
+
+console.log('Array 4:  Would throw TypeError');
+
+console.log("\nDisplay the original unmutated arrays after the calls to reduceIt:")
 console.log(myArr1.array);
-console.log(myArr1.reduceIt((acc, curr) => acc + curr, 10));
-
-console.log(myArr1.array);
-console.log(myArr1.reduceIt(factorial, 1));
-
 console.log(myArr2.array);
-console.log(myArr2.reduceIt((acc, curr) => acc + curr, 10));
+console.log(myArr3.array);
+console.log(myArr4.array);
 
-console.log(myArr2.array);
-console.log(myArr2.reduceIt((acc, curr) => acc + curr));
-
-
-
-
+// display TypeError when reduceIt is given an empty array and no initializer
+console.log("\n\nHere is the program crashing using myArr4...")
+console.log(myArr4.reduceIt((acc, curr) => acc + curr));
+// Expected: TypeError: reduceIt using an empty array and no initial value undefined

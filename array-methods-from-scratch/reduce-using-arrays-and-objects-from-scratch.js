@@ -77,7 +77,7 @@ const topSix = [
 const topSixArr = new Arrays(topSix); 
 const totalPoints = topSixArr.reduceIt((acc, currTeam) => acc + currTeam.points, 0); 
 console.log('Total points: ', totalPoints);
-// Expected:
+// Expected: 
 // Total points:  195
 
 
@@ -87,7 +87,7 @@ const occurrences = fruitsArr.reduceIt((acc, currFruit) => {
     return {...acc, [currFruit]: (acc[currFruit] || 0) + 1 }
 }, {}); 
 console.log('\nObject containing each fruit and its count:\n', occurrences);
-// Expected:
+// Expected: 
 // Object containing each fruit and its count:
 // { Banana: 2, Orange: 2, Apple: 1, Pear: 1 }
 
@@ -103,7 +103,7 @@ const students = [
 const studentsArr1 = new Arrays(students);
 const names = studentsArr1.reduceIt((acc, student) => [...acc, student.name], []); 
 console.log('\nArray containing only the names of each student object:\n', names);
-// Expected:
+// Expected: 
 // Array containing only the names of each student object:
 //  [ 'Kingsley', 'Jack', 'Joe', 'Beth', 'Kareem', 'Sarah' ]
 
@@ -121,7 +121,7 @@ const studentObj = studentsArr2.reduceIt((acc, student) => {
     return {...acc, [student.name]: student.position}
 }, {});
 console.log('\nReducing an array of student objects into 1 object with names and positions:\n', studentObj);
-// Expected:
+// Expected: 
 // Reducing an array of student objects into 1 object with names and positions:
 //  {
 //   Kingsley: '1st',
@@ -148,7 +148,7 @@ const max = studentsArr3.reduceIt((acc, student) => {
     return acc
 }, null);
 console.log('\nGet the max score from a set a scores:\n', max);
-// Expected:
+// Expected: 
 // Get the max score from a set a scores:
 //  93
 
@@ -162,7 +162,7 @@ const arrOfArrs = [
 const flattedArr = new Arrays(arrOfArrs);
 const flattened = flattedArr.reduceIt((acc, array) => acc.concat(array));
 console.log('\nA flattened array of arrays:\n', flattened);
-// Expected:
+// Expected: 
 // A flattened array of arrays:
 //  [
 //   'aaron',  'ake',

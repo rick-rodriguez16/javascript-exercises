@@ -37,8 +37,8 @@ class Arrays {
         
         for (let k = 0; k < this.len; k++) {
 
-            // Ignore empty slots in sparse arrays and evaluation is short-circuited when first condition
-            // is false, thereby not running the callback function as per ECMAScript
+            // Evaluation is short-circuited when first condition is false (empty index), 
+            // thereby not running the callback function for that index as per ECMAScript
             if(k in this.array == true && callbackFunction(this.array[k], k, this.array)) {   
                 return true
             }

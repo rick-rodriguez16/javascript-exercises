@@ -30,16 +30,18 @@ class Arrays {
 
     constructor(array) {
         this.array = array;
+        this.len = array.length
     }
 
     someElem (callbackFunction) {        
-        for (let i = 0; i < this.array.length; i++) {
-            if(i in this.array == false) {                              // ignore empty slots in sparse arrays
-                continue;
-            }
-            else if (callbackFunction(this.array[i], i, this.array)) {
+        
+        for (let k = 0; k < this.len; k++) {
+
+            // Ignore empty slots in sparse arrays and evaluation is short-circuited when first condition
+            // is false, thereby not running the callback function as per ECMAScript
+            if(k in this.array == true && callbackFunction(this.array[k], k, this.array)) {   
                 return true
-            };
+            }
         }
         return false;
     }
@@ -108,7 +110,7 @@ console.log('Show that sparse array elements dont get tested at all: ', myArray.
 const testArray5 = [1, undefined, 1];
 myArray = new Arrays(testArray5);
 console.log('Undefined array elements do get tested: ', myArray.someElem(e => e !== 1));
-
+// Expected output: Undefined array elements do get tested: true
 
 // Testing with non-array objects
 const arrayLike = {
@@ -118,5 +120,4 @@ const arrayLike = {
     2: "c",
 };
 myArray = new Arrays(arrayLike)
-console.log(myArray)
 console.log(myArray.someElem(e => typeof(e) === "number"));
